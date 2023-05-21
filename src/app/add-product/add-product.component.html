@@ -1,0 +1,49 @@
+<div class="card" style="padding: 10px; margin: 4vh 10px 10px 34vh;width: 130vh;height: auto; border-style: inset;background-color: #f1f1f1;">
+    
+    <h5 class="text-center" style="padding-top: 29px;">Add Product</h5>
+    <div class="card-body">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-12">
+                <label>Title</label>
+
+                <input type="text" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['title'].errors }" />
+                <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+                    <div *ngIf="f['title'].errors?.['required']">Title is required</div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label>Brand</label>
+                <select class="form-control" formControlName="brand" [ngClass]="{ 'is-invalid': submitted && f['brand'].errors }">
+                    <option *ngFor="let brand of brandList" [value]="brand">{{brand}}</option>
+                  </select>
+                  <div *ngIf="submitted && f['brand'].errors" class="invalid-feedback">
+                    <div *ngIf="f['brand'].errors?.['required']">Brand is required</div>
+                </div>
+            </div>
+        
+            <div class="form-group col-12">
+                <label>Location Available</label>
+                <select class="form-control" formControlName="location" [ngClass]="{ 'is-invalid': submitted && f['location'].errors }">
+                    <option *ngFor="let location of locationList" [value]="location">{{location}}</option>
+                  </select>
+                  <div *ngIf="submitted && f['location'].errors" class="invalid-feedback">
+                    <div *ngIf="f['location'].errors?.['required']">Location is required</div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label>Description</label>
+                <textarea formControlName="desc" class="form-control"> </textarea>
+            </div>
+            <div class="form-group col-12">
+
+                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" placeholder="Upload Image" />
+                <img style="    width: 135px;" *ngIf="imageUrl" [src]="imageUrl" class="image">
+            </div>
+            <div class="text-center" style="margin-top: 20px;">
+                <button class="btn btn-primary mr-1">Submit</button>
+                <button class="btn btn-secondary" style="margin-left: 10px;" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>

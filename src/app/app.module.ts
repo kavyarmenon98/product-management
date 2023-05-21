@@ -16,6 +16,10 @@ import { TrashComponent } from './trash/trash.component';
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatRadioModule } from "@angular/material/radio";
+import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from "@angular/material/input";
+import { ViewProductComponent } from './view-product/view-product.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 // import {  } from "@angular/material/";
 
@@ -23,7 +27,9 @@ import { MatRadioModule } from "@angular/material/radio";
   declarations: [
     AppComponent,
     ListProductComponent,
-    TrashComponent
+    TrashComponent,
+    ViewProductComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,10 @@ import { MatRadioModule } from "@angular/material/radio";
     BrowserAnimationsModule,
     MatSliderModule,
     MatSlideToggleModule,
-    MatRadioModule
+    ReactiveFormsModule,
+    MatRadioModule,
+    FormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

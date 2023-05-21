@@ -1,1 +1,18 @@
-<p>trash works!</p>
+<div class="content" *ngIf="deletedProduct.length>0" style="display: flex; justify-content: space-between; flex-flow: row wrap; margin: 10px;">
+    <div class="card" *ngFor="let product of deletedProduct ;let i = index"  style="padding: 10px; margin: 5px;text-align: center; width: 400px;height: 430px; border-style: inset;background-color: #f1f1f1;">
+            <img style="align-self: center;" class="product-img" width=200 [src]="product.img" /><br>
+            <span style="display: flex">
+                <mat-icon style="margin-right: 90px; margin-left: 117px;" (click)="restoreItem(product,i)">restore</mat-icon>
+                <mat-icon (click)="deleteItem(product,i)">delete</mat-icon>
+            </span>
+           
+            <br><span><b> {{product.name}}</b></span>
+            <br><span> {{product.desc| slice: 0:50}}</span>
+    </div>
+</div>    
+<div style="text-align: center;margin-top: 40vh;" *ngIf="deletedProduct.length==0">
+    <span>
+        No Records Found
+    </span>
+</div>
+
